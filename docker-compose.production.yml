@@ -1,0 +1,54 @@
+version: '3'
+# Yes you could merge compose files by specifying multiple -f arguments,
+# but it is harder to track changes. It is better to have a clear cut
+# separation between the development and production configurations.
+services:
+  db:
+    image: "postgres:11"
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_USER=${DB_ADMIN}
+      - POSTGRES_PASSWORD=${DB_ADMIN_PASSWORD}
+      - POSTGRES_DB=stackathon
+    volumes:
+      - "~/postgres:/var/lib/postgresql/data"
+    restart: "on-failure"
+  pgadmin:
+    image: "dpage/pgadmin4"
+    ports:
+      - "9999:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_ADMIN_PASSWORD}
+    volumes: 
+      - "~/pgadmin:/var/lib/pgadmin"
+    restart: "on-failure"
+  api:
+    build: ./api
+    environment:
+      NODE_ENV: production
+      DB_USER: ${DB_ADMIN}
+      DB_PASSWORD: ${DB_ADMIN_PASSWORD}
+      DB_NAME: stackathon
+      DB_PORT: 5432
+      DB_HOST: db
+      API_PORT: 8080
+      API_VERSION: v1
+    expose:
+      - "8080"
+    depends_on: 
+      - db
+    restart: "on-failure"
+  client:
+    build: ./client
+    environment:
+      NODE_ENV: production
+      API_NAME: api
+      API_PORT: 8080
+    ports:
+      - "8888:80"
+    depends_on:
+      - db
+      - api
+    restart: "on-failure"

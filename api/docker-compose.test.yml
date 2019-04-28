@@ -1,0 +1,42 @@
+version: "3.0"
+services: 
+  db:
+    image: "postgres:11"
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: password1
+      POSTGRES_DB: stackathon
+    networks: 
+      - testnet
+  api:
+    build: .
+    environment:
+      DB_USER: test
+      DB_PASSWORD: password1
+      DB_NAME: stackathon
+      DB_PORT: 5432
+      DB_HOST: db
+      API_PORT: 8080
+      API_VERSION: v1
+    restart: "on-failure"
+    networks: 
+      - testnet
+    depends_on:
+      - db
+    expose:
+      - "8080"
+  newman:
+    build: ./postman
+    depends_on:
+      - api
+    volumes:
+      - "./postman/collections:/etc/newman"
+      - "./postman/environments:/etc/newman_env"
+    networks:
+      - testnet
+    command: >
+      bash -c "newman run stackathon.postman_collection.json -r html,cli --environment /etc/newman_env/stackathon.postman_environment.json"
+networks:
+  testnet:

@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "d45d9aa3-6ae4-4d7a-a4e8-8bf7cbd0fe6c",
+		"name": "Stackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"this is a question\"\n}"
+				},
+				"url": {
+					"raw": "{{API_NAME}}:{{API_PORT}}/api/v1/questions",
+					"host": [
+						"{{API_NAME}}"
+					],
+					"port": "{{API_PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API_NAME}}:{{API_PORT}}/api/v1/questions",
+					"host": [
+						"{{API_NAME}}"
+					],
+					"port": "{{API_PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,3 @@
+build
+node_modules
+postman/collections/newman/*-run-report*
