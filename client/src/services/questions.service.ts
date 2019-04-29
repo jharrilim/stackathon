@@ -17,6 +17,7 @@ export class QuestionsService {
             if (response.status !== 200) {
                 throw new Error(`Request to ${resource} returned a non 200 status code.`);
             }
+            console.log(response);
             return response.data;
         } catch(reason) {
             console.error(reason);
