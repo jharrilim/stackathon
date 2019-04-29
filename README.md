@@ -11,7 +11,12 @@ An example of how to deliver modern best practices in node full-stack.
     - [Everything; Prod Mode](#everything-prod-mode)
     - [Debugging the Client](#debugging-the-client)
     - [Debugging the API](#debugging-the-api)
+  - [Testing](#testing)
     - [Running the Postman API Tests](#running-the-postman-api-tests)
+    - [Running the Unit Tests for the API and the Client](#running-the-unit-tests-for-the-api-and-the-client)
+    - [Test Structure](#test-structure)
+      - [Mocks](#mocks)
+      - [Naming Convention](#naming-convention)
   - [Features](#features)
 
 ## Running In Circles
@@ -64,6 +69,12 @@ docker-compose up -d db pgadmin
 
 You may perform similar steps as above to run the API.
 
+## Testing
+
+The API and the Client both use `jest` for testing. The API also uses Postman for blackbox testing. 
+You may find more information about **Postman** [here](https://www.getpostman.com/resources/videos-tutorials/) 
+and its CLI tool **Newman** [here](https://github.com/postmanlabs/newman#using-newman-cli).
+
 ### Running the Postman API Tests
 
 > Note: Make sure test.sh is executable: `chmod 744 ./api/scripts/test.sh`
@@ -71,6 +82,29 @@ You may perform similar steps as above to run the API.
 ```sh
 ./api/scripts/test.sh
 ```
+
+### Running the Unit Tests for the API and the Client
+
+```sh
+npm t
+```
+
+### Test Structure
+
+#### Mocks
+
+Jest mocks that are placed in `src/__mocks__/` will replace node_module packages of the same name. Eg:
+the `./client/__mocks__/axios.ts` mock replaces the Axios module when running jest.
+Documentation for this can be found [here](https://jestjs.io/docs/en/manual-mocks).
+
+#### Naming Convention
+
+Jest will look for any file inside of a `__tests__` folder, of any file that ends in:
+
+- .test.ts
+- .test.tsx
+- .spec.ts
+- .spec.tsx
 
 ## Features
 
