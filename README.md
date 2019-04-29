@@ -25,6 +25,10 @@ This repository acts as an example of how to deliver modern best practices in no
   - Annotations for the most common controller pattern used in: ASP.NET, Spring Boot, Flask, etc.
   - Better IDE Support
 - Password Hashing and Salting
+- Node.js Cluster
+  - Running a process for each core available on the host CPU
+  - Round robin load balancing
+  - Restart child process on failure
 
 ## Table of Contents
 
