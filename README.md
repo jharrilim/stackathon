@@ -1,5 +1,19 @@
 # Stackathon
 
+An example of how to deliver modern best practices in node full-stack.
+
+## Table of Contents
+
+- [Stackathon](#stackathon)
+  - [Table of Contents](#table-of-contents)
+  - [Running In Circles](#running-in-circles)
+    - [Everything; Dev Mode](#everything-dev-mode)
+    - [Everything; Prod Mode](#everything-prod-mode)
+    - [Debugging the Client](#debugging-the-client)
+    - [Debugging the API](#debugging-the-api)
+    - [Running the Postman API Tests](#running-the-postman-api-tests)
+  - [Features](#features)
+
 ## Running In Circles
 
 ### Everything; Dev Mode
@@ -20,6 +34,8 @@ Run it all using the docker-compose.production.yml.
 ```sh
 docker-compose -f docker-compose.production.yml up --build -d
 ```
+
+> Notier Note: You may also wish to use `kompose convert` and use `kubectl` instead if you are deploying to a Kubernetes provider.
 
 ### Debugging the Client
 
@@ -56,7 +72,7 @@ You may perform similar steps as above to run the API.
 ./api/scripts/test.sh
 ```
 
-### Features
+## Features
 
 - [API Features](./api/README.md)
 - [Client Features](./client/README.md)
