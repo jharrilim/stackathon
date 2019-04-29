@@ -1,10 +1,35 @@
 # Stackathon
 
-An example of how to deliver modern best practices in node full-stack.
+## Preface
+
+This repository acts as an example of how to deliver modern best practices in node full-stack. This example will show you:
+
+- Docker Compose
+  - In production
+    - Acting as VPC with only 1 entry point
+  - In development
+    - Ports exposed; easy to access
+    - PGAdmin available
+  - In test
+    - Running Postman test collections against your API
+- Nginx Configuration
+  - Reverse Proxy to API
+  - CORS Enabled
+- Modern React
+  - Functional Components
+  - React Context as an IoC container
+  - React Hooks for simplified and localized state updates
+- Typescript
+  - Using Interfaces for [compile-time PropTypes](https://github.com/Microsoft/TypeScript-React-Starter#creating-a-component) instead of [runtime PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
+  - Get type hints for Context and Hooks
+  - Annotations for the most common controller pattern used in: ASP.NET, Spring Boot, Flask, etc.
+  - Better IDE Support
+- Password Hashing and Salting
 
 ## Table of Contents
 
 - [Stackathon](#stackathon)
+  - [Preface](#preface)
   - [Table of Contents](#table-of-contents)
   - [Running In Circles](#running-in-circles)
     - [Everything; Dev Mode](#everything-dev-mode)
