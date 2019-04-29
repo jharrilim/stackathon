@@ -14,6 +14,9 @@ An example of how to deliver modern best practices in node full-stack.
   - [Testing](#testing)
     - [Running the Postman API Tests](#running-the-postman-api-tests)
     - [Running the Unit Tests for the API and the Client](#running-the-unit-tests-for-the-api-and-the-client)
+    - [Code Structure](#code-structure)
+      - [API](#api)
+      - [Client](#client)
     - [Test Structure](#test-structure)
       - [Mocks](#mocks)
       - [Naming Convention](#naming-convention)
@@ -89,13 +92,28 @@ and its CLI tool **Newman** [here](https://github.com/postmanlabs/newman#using-n
 npm t
 ```
 
+### Code Structure
+
+#### API
+
+The API code is sorted by feature as opposed to structural formatting. Since the routes 
+don't have any overlap, this keeps everything in nice tidy areas.
+This is similar to [ASP.NET Areas](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/areas?view=aspnetcore-2.2).
+
+#### Client
+
+The Client code is structured in a more familiar structural layout.
+It is kept this way as the components directory tends to grow large, and keeping the services
+together makes it easier to find when adding it to the AppContext for dependency injection.
+
 ### Test Structure
 
 #### Mocks
 
 Jest mocks that are placed in `src/__mocks__/` will replace node_module packages of the same name. Eg:
 the `./client/__mocks__/axios.ts` mock replaces the Axios module when running jest.
-Documentation for this can be found [here](https://jestjs.io/docs/en/manual-mocks).
+
+> Documentation for this can be found [here](https://jestjs.io/docs/en/manual-mocks).
 
 #### Naming Convention
 
