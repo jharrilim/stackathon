@@ -8,5 +8,19 @@ const stories = storiesOf('Components', module);
 stories.add(
   'QuestionList',
   () => <QuestionList />,
-  { info: { inline: true } }
+  {
+    info: {
+      text: `
+        ### Notes
+
+        This is the QuestionList component which is used a container for each Question component.
+
+        ### Usage
+                
+        ~~~js
+        <QuestionList/>
+        ~~~
+      `,
+    }
+  }
 );
