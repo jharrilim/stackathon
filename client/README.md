@@ -7,3 +7,4 @@
 - Jest tests
 - Multistage Dockerfile with deployment on Nginx
 - ARIA attributes for accessibility
+- Storybook.js component prototyping
